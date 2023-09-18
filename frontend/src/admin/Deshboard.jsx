@@ -58,9 +58,9 @@ export const Deshboard = () => {
 
   const CountFun = () => {
     axios
-      .get(`http://localhost:0880/product/product_count/`, {
+      .get(`https://weak-ruby-bull-wear.cyclic.app/product/product_count/`, {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {
@@ -71,9 +71,9 @@ export const Deshboard = () => {
 
   const OrderFun = () => {
     axios
-      .get(`http://localhost:0880/order/`, {
+      .get(`https://weak-ruby-bull-wear.cyclic.app/order/`, {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: localStorage.getItem("admin_token"),
         },
       })
       .then((res) => {

@@ -9,11 +9,12 @@ export const getOrdersData = (dispatch) => {
   axios
     .get(`https://weak-ruby-bull-wear.cyclic.app/order/`, {
       headers: {
-        Authorization: localStorage.getItem("token"),
+        Authorization: localStorage.getItem("admin_token"),
       },
     })
     .then((res) => {
-      dispatch({ type: types.GETORDERSDATA, payload: res.data });
+      dispatch({ type: types.GETORDERSDATA, payload: res.data.orderData });
+      console.log(res.data.orderData);
     })
     .catch(() => dispatch({ type: types.ERROR }));
 };
@@ -22,9 +23,10 @@ export const getOrdersData = (dispatch) => {
 export const getProductsCount = (dispatch) => {
   dispatch({ type: types.LOADING });
   axios
+    .get(`https://weak-ruby-bull-wear.cyclic.app/product_count/`, {
     .get(`https://weak-ruby-bull-wear.cyclic.app/product/product_count/`, {
       headers: {
-        Authorization: localStorage.getItem("token"),
+        Authorization: localStorage.getItem("admin_token"),
       },
     })
     .then((res) => {
@@ -39,7 +41,7 @@ export const DeleteOrdersData = (id) => (dispatch) => {
   axios
     .delete(`https://weak-ruby-bull-wear.cyclic.app/cartProducts/${id}`, {
       headers: {
-        Authorization: localStorage.getItem("token"),
+        Authorization: localStorage.getItem("admin_token"),
       },
     })
     .then((res) => {
@@ -56,7 +58,7 @@ export const getAdminProducts = (dispatch) => {
   axios
     .get(`https://weak-ruby-bull-wear.cyclic.app/product/`, {
       headers: {
-        Authorization: localStorage.getItem("token"),
+        Authorization: localStorage.getItem("admin_token"),
       },
     })
     .then((res) => {
@@ -73,7 +75,7 @@ export const AddAdminProducts = (details) => async (dispatch) => {
   axios
     .post(`https://weak-ruby-bull-wear.cyclic.app/product/create`, details, {
       headers: {
-        Authorization: localStorage.getItem("token"),
+        Authorization: localStorage.getItem("admin_token"),
       },
     })
     .then((res) => {
@@ -91,7 +93,7 @@ export const DeleteAdminProducts = (id) => async (dispatch) => {
   axios
     .delete(`https://weak-ruby-bull-wear.cyclic.app/product/delete/${id}`, {
       headers: {
-        Authorization: localStorage.getItem("token"),
+        Authorization: localStorage.getItem("admin_token"),
       },
     })
     .then((res) => {
@@ -113,7 +115,7 @@ export const editAdminProducts = (id, changes) => async (dispatch) => {
       changes,
       {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: localStorage.getItem("admin_token"),
         },
       }
     )
@@ -134,7 +136,7 @@ export const editAdminDetails = (id, changes) => async (dispatch) => {
       changes,
       {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: localStorage.getItem("admin_token"),
         },
       }
     )
